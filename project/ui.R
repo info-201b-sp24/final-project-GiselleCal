@@ -1,6 +1,7 @@
 library(shiny)
-library(bslib)
 library(ggplot2)
+library(plotly)
+library(shinythemes)
 
 ui <- navbarPage(
   theme = bs_theme(bg = "#A1B6B0",
@@ -9,7 +10,7 @@ ui <- navbarPage(
                    base_font = font_google("Montserrat")
   ),
   title = "Final Info project",
-  sidebar = sidebar("Sidebar"),
+  sidebar = NULL,
   tabPanel("Introduction",
            imageOutput("Info_final_image.png"),
            mainPanel(
@@ -39,11 +40,21 @@ ui <- navbarPage(
              p("This is the main content for Page 2.")
            )
   ),
-  tabPanel("Page 3",
-           mainPanel(
-             h2("Main Content for Chart 3"),
-             p("This is the main content for Page 3."),
-             plotOutput("chart3plot")
+  tabPanel("Saturation Exploration",
+           fluidPage(
+             titlePanel("Saturations effect on color!"),
+             sidebarLayout(
+               sidebarPanel(
+                 tags$h3("write some thing here")
+               ),
+               mainPanel(
+                 radioButtons("chart_type",
+                              "Select Chart to display:", 
+                              choices = c("Fenty" = "Fenty", "Mac" = "Mac"), 
+                              selected = "Fenty"),
+                 plotlyOutput("chart3plot"),
+               )
+             )
            )
   ),
   tabPanel("Conclusion",
@@ -54,19 +65,18 @@ ui <- navbarPage(
   ),
 )
 server <- function(input, output, session) {
-  
-  output$chart3plot <- renderPlot({
-    p2 <- ggplot(data = filtered_data, aes(
-      x = product, 
-      y = S, 
-      fill = brand)) + 
-      geom_bar(stat = "identity",position = "dodge", colour = "black") + 
-      labs(y = "Saturation Levels", x = "Brands", fill = "Brands") + 
-      ggtitle("Fenty vs. Mac: Saturation Level Differences")
+  output$chart3plot <- renderPlotly({
+    data <- switch(input$chart_type,
+                   "Fenty" = fenty_data,
+                   "Mac" = mac_data)
+    p2 <- ggplot(data = data, aes(x = product, y = S, size = S, fill = brand)) + 
+      geom_point(position = position_jitter(width = 0.3, height = 0.3), alpha = 0.7, shape = 21, colour = "black") +
+      scale_size_continuous(range = c(3, 10)) +
+      labs(y = "Saturation Levels", x = "Product", fill = "Brand", size = "Saturation") +
+      ggtitle(paste(input$chart_type, "Foundation: Saturation Level")) +
+      theme_minimal()
     ggplotly(p2)
-    
   })
 }
 
 shinyApp(ui = ui, server = server)
-
