@@ -1,22 +1,38 @@
 library(shiny)
 library(bslib)
-library(ggplot2)
 
 
-#Ui 
-
-
-ui <- page_sidebar(
-  title = "Saturation color templet",
+ui <- navbarPage(
+  title = "Final Info project",
   sidebar = sidebar("Sidebar"),
-  card(
-    card_header("Saturation variation in color range"),
-    "Card Body"
-  )
+  tabPanel("Introduction",
+           mainPanel(
+             h2("Main Content for Introduction"),
+             p("This is the main content for the introduction page."),
+           )
+  ),
+  tabPanel("Page 1",
+           mainPanel(
+             h2("Main Content for Chart 1"),
+             p("This is the main content for Page 1."),
+           )
+  ), 
+  tabPanel("Page 2",
+           mainPanel(
+             h2("Main Content for Chart 2"),
+             p("This is the main content for Page 2.")
+           )
+  ),
+  tabPanel("Page 3",
+           mainPanel(
+             h2("Main Content for Chart 3"),
+             p("This is the main content for Page 3.")
+           )
+  ),
+  tabPanel("Conclusion",
+           mainPanel(
+             h2("Main Content for Conclusion"),
+             p("This is the main content for the conclusion.")
+           )
+  ),
 )
-
-server <- function(input,output) {
-  
-}
-
-shinyApp(ui = ui, server = server)
