@@ -1,5 +1,7 @@
 # Load ggplot2
 library(ggplot2)
+library(plotly)
+library(gapminder)
 
 foundation_dataset <- read.csv("shades.csv")
 
@@ -9,6 +11,7 @@ filtered_data <- subset(foundation_dataset, brand %in% c("Fenty", "MAC"))
 
 # Bar graph: Comparing the difference saturation levels between Fenty and Mac. 
 
+p <- gapminder %>%
 ggplot(data = filtered_data, aes(
   x = product, 
   y = S, 
@@ -16,4 +19,4 @@ ggplot(data = filtered_data, aes(
   geom_bar(stat = "identity",position = "dodge", colour = "black") + 
   labs(y = "Saturation Levels", x = "Brands", fill = "Brands") + 
   ggtitle("Fenty vs. Mac: Saturation Level Differences")
-
+ggplotly(p)
