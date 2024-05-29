@@ -10,11 +10,9 @@
 library(shiny)
 
 # Define server logic required to draw a histogram
-function(input, output, session) {
+server <- function(input, output, session) {
 
-    output$distPlot <- renderPlot({
-
-        # generate bins based on input$bins from ui.R
+    output$chart3plot <- renderPlot({
       p2 <- ggplot(data = filtered_data, aes(
         x = product, 
         y = S, 
@@ -25,5 +23,6 @@ function(input, output, session) {
       ggplotly(p2)
 
     })
-
 }
+
+shinyApp(ui = ui, server = server)

@@ -1,6 +1,6 @@
 library(shiny)
 library(bslib)
-
+library(ggplot2)
 
 ui <- navbarPage(
   title = "Final Info project",
@@ -26,7 +26,8 @@ ui <- navbarPage(
   tabPanel("Page 3",
            mainPanel(
              h2("Main Content for Chart 3"),
-             p("This is the main content for Page 3.")
+             p("This is the main content for Page 3."),
+             plotOutput("chart3plot")
            )
   ),
   tabPanel("Conclusion",
