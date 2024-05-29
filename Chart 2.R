@@ -1,6 +1,6 @@
 library(ggplot2)
 
-foundation_dataset <- read.csv("shades.csv")
+foundation_dataset <- read.csv("https://raw.githubusercontent.com/info-201b-sp24/exploratory-analysis-Aisha03792/main/shades.csv")
 
 filtered_values <- subset(foundation_dataset, brand %in% c("MAC", "Fenty"))
 
