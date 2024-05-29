@@ -27,4 +27,5 @@ server <- function(input, output, session) {
       theme_minimal()
     ggplotly(p2)
   })
+  
 }

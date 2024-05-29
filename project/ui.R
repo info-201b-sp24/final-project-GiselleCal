@@ -45,7 +45,7 @@ ui <- navbarPage(
              titlePanel("Saturations effect on color!"),
              sidebarLayout(
                sidebarPanel(
-                 tags$h3("write some thing here")
+                 p("In this page we are going to futhure out reserch of how saturation playes a role when making shade ranges in these companies.")
                ),
                mainPanel(
                  radioButtons("chart_type",
