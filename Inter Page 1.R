@@ -3,7 +3,7 @@ library(ggplot2)
 library(dplyr)
 library(plotly)
 
-n
+
 
 # Load the dataset
 Foundation_dataset <- read.csv("https://raw.githubusercontent.com/the-pudding/data/master/makeup-shades/shades.csv")
