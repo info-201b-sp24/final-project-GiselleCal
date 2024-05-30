@@ -4,12 +4,12 @@ library(plotly)
 library(shinythemes)
 
 ui <- navbarPage(
+  title = "Final Info project",
   theme = bs_theme(bg = "#A1B6B0",
                    fg = "black",
-                   primary = "maroon",
+                   primary = "#C2858C",
                    base_font = font_google("Montserrat")
   ),
-  title = "Final Info project",
   sidebar = NULL,
   tabPanel("Introduction",
            imageOutput("Info_final_image.png"),
@@ -17,8 +17,9 @@ ui <- navbarPage(
              h2("Diversity in the Makeup Industry (How Can The Industry Improve?)"),
              img(src='Info_final_Image.png', height = 400, width = 400, align = "center"),
              p("Our project is focused on the inclusivity of foundation ranges with two brands such as Fenty Beauty and Mac. For many years, there has been ongoing demand and concerns regarding inclusivity in the beauty industry. It is common knowledge, how diversity is glaringly insufficient and undesirable in today's progressive society. The darker shades of foundation on the color spectrum are usually limited and not many people of color have access to a wider range of shades within their skin tone. Despite people of color perpetually voicing their concerns about the lack of diversity. Unfortunately, many well-known brands disregard these claims and instead, they consistently cater to a lighter range of skin tones. No matter how many times consumers raise their voices, it has become apparent that disregarding the inclusivity of a certain population is a very detrimental oversight. Considering the fact that customers can wield their purchasing power anytime for a change. After many years, now the beauty industry is slowly evolving and some changes have been pioneered with brands like Fenty Beauty. Especially brands like Fenty Beauty a Black-owned brand, is known for advocating for inclusivity and her foundation ranges are more diverse than any other brands."),
-             p("The objective of this project is to conduct an analysis of the foundation shade offerings between two highly sought and leading cosmetic brands, Fenty Beauty (Black owned brand) and Mac Cosmetics (White owned brand). We are collecting and analyzing our data from, *The Pudding: Beauty Brawl*. We intend to evaluate the elements within foundation shade coloring that leads to a more diverse and inclusive range of foundation shades by evaluating the Saturation, Hues, and Lightness range of the brand shades."),
-             p("Original Data: https://raw.githubusercontent.com/the-pudding/data/master/makeup-shades/shades.csv"),
+             p("The objective of this project is to conduct an analysis of the foundation shade offerings between two highly sought and leading cosmetic brands, Fenty Beauty (Black owned brand) and Mac Cosmetics (White owned brand). We are collecting and analyzing our data from, The Pudding: Beauty Brawl. We intend to evaluate the elements within foundation shade coloring that leads to a more diverse and inclusive range of foundation shades by evaluating the Saturation, Hues, and Lightness range of the brand shades."),
+             h4("Original Data:"), 
+             p("https://raw.githubusercontent.com/the-pudding/data/master/makeup-shades/shades.csv"),
              h3("Questions:"),
              p("Some research questions that we want to address in our project are what ranges of foundation shades are offered compared to different brands? Also how diverse are the lightness, saturation, and hues of each of the undertones? How does each brand show inclusivity within its foundation ranges?"),
              p("These questions are important to address because we want to investigate how prominent it is to have inclusivity when it comes to the beauty industry. Moreover, we want the beauty industry to cater to all skin tones and not be biased when it comes to representing people of color."),
