@@ -54,30 +54,31 @@ tabPanel("Page 2",
              p("This is the main content for Page 2.")
            )
   ),
-tabPanel("Saturation Exploration",
-         fluidPage(
-           titlePanel("Saturations Differences across Brands!"),
-           sidebarLayout(
-             sidebarPanel(
-               p("This section allows you to play and explore the difference in saturation between beauty companies from different regions to show the differences of saturation these companies have. This section puts the data I have collected between Mac and Fenty within a bubble graph. This section attempts to answer the question: How diverse is saturation and how does that play in the undertones of makeup companies?")
-             ),
-             mainPanel(
-               radioButtons("chart_type",
-                            "Select Chart to display:", 
-                            choices = c("Fenty", "Mac", "House of Tara", 
-                                        "Hegai and Ester", "Addiction", "IPSA", "Lakmé", "Lotus Herbals"),
-                            selected = "Fenty"),
-               plotlyOutput("chartUSplot"),
-               plotlyOutput("chartUS.2"),
-               plotlyOutput("chartNig1"),
-               plotlyOutput("chartNig2"), 
-               plotlyOutput("chartjapan1"),
-               plotlyOutput("chartjapan2"),
-               plotlyOutput("chartIndi1"),
-               plotlyOutput("chartIndi2")
+ tabPanel("Saturation Exploration",
+           fluidPage(
+             titlePanel("Saturations Differences across Brands!"),
+             sidebarLayout(
+               sidebarPanel(
+                 p("This section allows you to play and explore the difference in saturation between beauty companies from different regions to show the differences of saturation these companies have. This section puts the data I have collected between Mac and Fenty within a bubble graph. This section attempts to answer the question: How diverse is saturation and how does that play in the undertones of makeup companies?")
+               ),
+               mainPanel(
+                 radioButtons("chart_type",
+                              "Select Chart to display:", 
+                              choices = c("Fenty", "Mac", "House of Tara", 
+                                          "Hegai and Ester", "Addiction", "Ipsa", "Lakmé", "Lotus Herbals"),
+                              selected = "Fenty"),
+                 plotlyOutput("chartUSplot"),
+                 plotlyOutput("chartUS.2"),
+                 plotlyOutput("chartNig1"),
+                 plotlyOutput("chartNig2"), 
+                 plotlyOutput("chartjapan1"),
+                 plotlyOutput("chartjapan2"),
+                 plotlyOutput("chartIndi1"),
+                 plotlyOutput("chartIndi2")
+               )
              )
            )
-         )
+  )
 ),
 
   tabPanel("Conclusion",
@@ -92,7 +93,7 @@ tabPanel("Saturation Exploration",
              p("Overall, Fenty, a Black owned brand, shows the most diverse range of foundation in regards to not only foundation color but the variety of undertones their foundation caters towards. Inclusivity in foundation shade is not based on the color itself but the undertones catered towards. Brands who take better care and notice the layers that go into making their shade show a larger range of shade diversity than those who do not. BIPOC owned brands through our data research show a more diverse range when taking these other elements into account."),
   )
   )
-)
+
 server <- function(input, output, session) {
   output$chartUSplot <- renderPlotly({
     data <- switch(input$chart_type,
@@ -101,9 +102,9 @@ server <- function(input, output, session) {
                    "House of Tara" = House_data,
                    "Hegai and Ester" = Hegai_data,
                    "Addiction" = addict_data,
-                   "IPSA" = ipsa_data, 
+                   "Ipsa" = ipsa_data, 
                    "Lakmé" = Lakmé_data, 
-                   "Lotus Herbals" = LotusHerbals_data,
+                   "Lotus Herbals" = LotusHerbals_data
     )
     
     p2 <- ggplot(data = data, aes(x = product, y = S, size = S, fill = brand)) + 
