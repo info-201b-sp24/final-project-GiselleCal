@@ -4,12 +4,11 @@ library(ggplot2)
 library(dplyr)
 
 # Load data from the URL
-Foundation_dataset <- read.csv("https://raw.githubusercontent.com/the-pudding/data/master/makeup-shades/shades.csv")
-
+foundation_dataset <- read.csv("shades (1).csv")
 
 # Filter the data for MAC and Fenty brands
 
-filtered_data <- subset(Foundation_dataset, brand %in% c("Fenty", "MAC"))
+filtered_data <- subset(foundation_dataset, brand %in% c("Fenty", "MAC"))
 
 # Create the histogram
 

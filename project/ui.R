@@ -5,7 +5,7 @@ library(shinythemes)
 
 ui <- navbarPage(
   title = "Final Info project",
-  theme = bs_theme(bg = "#A1B6B0",
+  theme = bs_theme(bg = "#A1B6B0", 
                    fg = "black",
                    primary = "#C2858C",
                    base_font = font_google("Montserrat")
