@@ -59,7 +59,7 @@ tabPanel("Page 2",
              titlePanel("Saturations Differences across Brands!"),
              sidebarLayout(
                sidebarPanel(
-                 p("This section allows you to play and explore the difference in saturation between beauty companies from different regions to show the differences of saturation these companies have. This section puts the data I have collected between Mac and Fenty within a bubble graph. This section attempts to answer the question: How diverse is saturation and how does that play in the undertones of makeup companies?")
+                 p("The chart attempts to visualize and understand the difference between saturation from companies of different regions across the globe, touching bases in America, Nigeria, and Japan. I am to reveal patterns and variations in the undertones and diversity of saturation between all these brands. Presenting the data in a bubble chart makes it easy to intuitively understand and creatively observe the divergence of observations, which is presented by the size and density of bubbles. The range of bubble sizes shows the variation in saturation levels offered by different companies. Larger bubbles represent higher saturation and smaller bubbles represent lower saturation levels. These charts are helpful in understanding the variation in saturation levels and make it easy to identify which company provided the more diverse bubble for a group of people.")
                ),
                mainPanel(
                  radioButtons("chart_type",
