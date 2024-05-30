@@ -48,11 +48,23 @@ ui <- navbarPage(
            )
   ),
   
-tabPanel("Page 2",
-           mainPanel(
-             h2("Main Content for Chart 2"),
-             p("This is the main content for Page 2.")
+tabPanel("Box Plot",
+         
+         fluidPage(
+           titlePanel("Interactive Box Plot of Foundation Shades"),
+           sidebarLayout(
+             sidebarPanel(
+               selectInput("brandSelection", "Select Brands:",
+                           choices = unique(foundation_dataset$brand),
+                           selected = c("MAC", "Fenty"),
+                           multiple = TRUE)
+             ),
+             mainPanel(
+               plotlyOutput("BoxPlot"),
+               p("I used a box plot to compare the hues of foundations from Fenty and Mac. From this plot, it is evident that Fenty is more inclusive of medium and darker skin tones. The range is greater for Fenty foundations hues as well. The wider hue range implies that there’s inclusivity and broader skin tones are accommodated. A variety of skin tones can be matched with a wider hue range. Hence Fenty, having a wider hue range, is able to have foundation shades that match more skin tones.")
+             )
            )
+         )
   ),
  tabPanel("Saturation Exploration",
            fluidPage(
@@ -68,17 +80,10 @@ tabPanel("Page 2",
                                           "Hegai and Ester", "Addiction", "Ipsa", "Lakmé", "Lotus Herbals"),
                               selected = "Fenty"),
                  plotlyOutput("chartUSplot"),
-                 plotlyOutput("chartUS.2"),
-                 plotlyOutput("chartNig1"),
-                 plotlyOutput("chartNig2"), 
-                 plotlyOutput("chartjapan1"),
-                 plotlyOutput("chartjapan2"),
-                 plotlyOutput("chartIndi1"),
-                 plotlyOutput("chartIndi2")
                )
              )
            )
-  )
+         
 ),
 
   tabPanel("Conclusion",
@@ -91,9 +96,9 @@ tabPanel("Page 2",
              p("The highest saturation level was found in Fenty at 0.79 in a 0-1 range."),
              p("Lightness scale is based on 10 point range between shade categories ranging from 0-100. The shades are categorized in ascending order with the darkest shade at the beginning (0-10). When evaluating the Hue, we pulled the highest and lowest number when evaluating shade range. Hue indicates the color used in the undertone of the foundation, which plays a direct role in shade variety when paired with saturation. This alone cannot tell whether a brand has a more diverse shade range as saturation plays a large role in the overall shade color. When it comes to the saturation we searched for the highest value to indicate which shade offers the darker shades in association to the hue. Saturation is the strength in which the hue color appears."),
              p("Overall, Fenty, a Black owned brand, shows the most diverse range of foundation in regards to not only foundation color but the variety of undertones their foundation caters towards. Inclusivity in foundation shade is not based on the color itself but the undertones catered towards. Brands who take better care and notice the layers that go into making their shade show a larger range of shade diversity than those who do not. BIPOC owned brands through our data research show a more diverse range when taking these other elements into account."),
+           )
   )
-  )
-
+)
 server <- function(input, output, session) {
   output$chartUSplot <- renderPlotly({
     data <- switch(input$chart_type,
