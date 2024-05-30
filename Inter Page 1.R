@@ -33,7 +33,7 @@ ui <- fluidPage(
 # Define the server logic
 server <- function(input, output) {
   filtered_data <- reactive({
-    subset(Foundation_dataset, brand %in% input$brands)
+    subset(foundation_dataset, brand %in% input$brands)
   })
   
   output$histogramPlot <- renderPlotly({
