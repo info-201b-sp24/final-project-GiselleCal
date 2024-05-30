@@ -82,8 +82,14 @@ tabPanel("Saturation Exploration",
 
   tabPanel("Conclusion",
            mainPanel(
-             h2("Main Content for Conclusion"),
-             p("This is the main content for the conclusion.")
+             h2("Main Takeaways"),
+             p("There is a divide between white and black owned makeup companies when it comes to foundation shade. Through our research we attempt to answer the question of the varying shades in brand. Connecting the number of shades available with the diversity of a brand. Our analysis revealed that in 2018, Fenty, a black owned business, is more diverse than MAC. Fenty, along with their 42 shades of foundation to MAC’s 40 shade allows for not only a larger range of shades to choose from but a difference in shade variety through varying undertones."),
+             h3("Taking a further look at the data:"),
+             p("Fenty has the highest (94) and lowest (25) lightness score when it comes to their foundation shades."),
+             p("Fenty uses a total of 13 unique types of hues, while MAC uses 14."),
+             p("The highest saturation level was found in Fenty at 0.79 in a 0-1 range."),
+             p("Lightness scale is based on 10 point range between shade categories ranging from 0-100. The shades are categorized in ascending order with the darkest shade at the beginning (0-10). When evaluating the Hue, we pulled the highest and lowest number when evaluating shade range. Hue indicates the color used in the undertone of the foundation, which plays a direct role in shade variety when paired with saturation. This alone cannot tell whether a brand has a more diverse shade range as saturation plays a large role in the overall shade color. When it comes to the saturation we searched for the highest value to indicate which shade offers the darker shades in association to the hue. Saturation is the strength in which the hue color appears."),
+             p("Overall, Fenty, a Black owned brand, shows the most diverse range of foundation in regards to not only foundation color but the variety of undertones their foundation caters towards. Inclusivity in foundation shade is not based on the color itself but the undertones catered towards. Brands who take better care and notice the layers that go into making their shade show a larger range of shade diversity than those who do not. BIPOC owned brands through our data research show a more diverse range when taking these other elements into account."),
            )
   ),
 )
