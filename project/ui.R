@@ -57,16 +57,12 @@ tabPanel("Page 2",
   ),
 tabPanel("Saturation Exploration",
          fluidPage(
-           titlePanel("Saturations effect on color!"),
+           titlePanel("Saturations Differences across Brands!"),
            sidebarLayout(
              sidebarPanel(
                p("This section allows you to play and explore the difference in saturation between beauty companies from different regions to show the differences of saturation these companies have. This section puts the data I have collected between Mac and Fenty within a bubble graph. This section attempts to answer the question: How diverse is saturation and how does that play in the undertones of makeup companies?")
              ),
              mainPanel(
-               selectInput("my_select_input",
-                           label = "Select a region to explore:",
-                           choices = c("Choose region","Nigerian Brands", "Indian Brands", "Japan Brands", "American Brands"),
-                           selected = "Choose Region"),
                radioButtons("chart_type",
                             "Select Chart to display:", 
                             choices = c("Fenty", "Mac", "House of Tara", 
