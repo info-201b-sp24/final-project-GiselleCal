@@ -29,13 +29,27 @@ ui <- navbarPage(
              p("The challenges or limitations that may arise while working with our dataset are heavily dependent on the size of the dataset, and how they have decided to evaluate the foundation shades. While the data set provides us with a good starting point it still leaves us with limitations and challenges regarding the foundation colors and companies that they have analyzed. Another challenge that arises with our dataset is that there is a lack of visual representation of the shade colors they evaluated This makes it less accessible, as hue and saturation are not common knowledge when customers are shopping for foundation shades. The insufficiency of a visual presence for the foundation colors can hinder the understanding of the diversity and inclusivity of these brands’ shade ranges. This would also pose a challenge in assessing the diversity and inclusivity of the brand's foundation shades when we are not able to analyze further and identify if undertone and skin tones play a role in the shade ranges they have included in their dataset."),
            )
   ),
-  tabPanel("Page 1",
-           mainPanel(
-             h2("Main Content for Chart 1"),
-             p("This is the main content for Page 1."),
+ tabPanel("Histogram",
+           fluidPage(
+             titlePanel("Interactive Histogram of Foundation Shades"),
+             
+             sidebarLayout(
+               sidebarPanel(
+                 sliderInput("bins", "Number of Bins:", min = 10, max = 50, value = 30),
+                 checkboxGroupInput("brands", "Select Brands:",
+                                    choices = unique(Foundation_dataset$brand),
+                                    selected = c("Fenty", "MAC"))
+               ),
+               
+               mainPanel(
+                 plotlyOutput("histogramPlot"),
+                 p("The above data set shows the comparison of lightness shades of the two brands Fenty and Mac. Observing the data set you can see how Fenty Foundation has more darker shades than the brand Mac. On the other hand, Mac has more frequency of lightness foundation than Fenty. For example, in the dataset, Mac has more significant brands of foundation that appear to be lighter and one shade that is the darkest. Additionally, in this dataset, the brand Mac appears to cater to more lightness instead of having an equal distribution of shade ranges like Fenty. Moreover, one can make the inference that if you are a person of color then a wiser choice would be to use Fenty Foundation as it appears to be more inclusive than Mac.")
+               )
+             )
            )
-  ), 
-  tabPanel("Page 2",
+  ),
+  
+tabPanel("Page 2",
            mainPanel(
              h2("Main Content for Chart 2"),
              p("This is the main content for Page 2.")
@@ -80,6 +94,29 @@ server <- function(input, output, session) {
     ggplotly(p2)
   })
 }
+
+# Define the server logic
+
+server <- function(input, output) {
+  filtered_data <- reactive({
+    subset(Foundation_dataset, brand %in% input$brands)
+  })
+  
+  output$histogramPlot <- renderPlotly({
+    p <- ggplot(data = filtered_data(), aes(x = L, fill = brand, text = paste("Brand:", brand, "<br>Lightness:", L))) +
+      geom_histogram(bins = input$bins, color = "black", alpha = 0.7, position = "identity") +
+      labs(
+        title = "Histogram of Lightness for Selected Brands",
+        x = "Lightness",
+        y = "Frequency",
+        fill = "Brand"
+      ) +
+      theme_minimal()
+    
+    ggplotly(p, tooltip = "text")
+  })
+}
+
 
 shinyApp(ui = ui, server = server)
 
