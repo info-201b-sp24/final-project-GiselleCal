@@ -97,3 +97,28 @@ server <- function(input, output, session) {
 }
 
 }
+
+
+# Lightness of foundation server logic
+
+server <- function(input, output) {
+  filtered_data <- reactive({
+    subset(Foundation_dataset, brand %in% input$brands)
+  })
+  
+  output$histogramPlot <- renderPlotly({
+    p <- ggplot(data = filtered_data(), aes(x = L, fill = brand, text = paste("Brand:", brand, "<br>Lightness:", L))) +
+      geom_histogram(bins = input$bins, color = "black", alpha = 0.7, position = "identity") +
+      labs(
+        title = "Histogram of Lightness for Selected Brands",
+        x = "Lightness",
+        y = "Frequency",
+        fill = "Brand"
+      ) +
+      theme_minimal()
+    
+    ggplotly(p, tooltip = "text")
+  })
+}
+
+
