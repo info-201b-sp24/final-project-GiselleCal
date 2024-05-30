@@ -3,8 +3,19 @@ library(ggplotly)
 library(shiny)
 
 
-foundation_dataset <- read.csv("https://raw.githubusercontent.com/info-201b-sp24/exploratory-analysis-Aisha03792/main/shades.csv")
+foundation_dataset <- read.csv("shades (1).csv")
 
+mac_data <- subset(foundation_dataset, brand %in% c("Mac"))
+fenty_data <- subset(foundation_dataset, brand %in% c("Fenty"))
+
+House_data <- subset(foundation_dataset, brand %in% c("House of Tara"))
+Hegai_data <- subset(foundation_dataset, brand %in% c("Hegai and Ester"))
+
+LotusHerbals_data <- subset(foundation_dataset, brand %in% c("Lotus Herbals"))
+Lakmé_data <- subset(foundation_dataset, brand %in% c("Lakmé"))
+
+addict_data <- subset(foundation_dataset, brand %in% c("Addiction"))
+ipsa_data <- subset(foundation_dataset, brand %in% c("Ispa"))
 
 server <- function(input, output, session) {
   output$chartUSplot <- renderPlotly({
@@ -61,7 +72,7 @@ server <- function(input, output, session) {
       geom_point(position = position_jitter(width = 0.3, height = 0.3), alpha = 0.7, shape = 21, colour = "blue") +
       scale_size_continuous(range = c(-5, 10)) +
       labs(x = "Product", y = "Saturation", color = "Brand") +
-      ggtitle("House of Tara vs. Hegai and Ester: Saturation Comparison") +
+      ggtitle("Ispa: Saturation Comparison Levels") +
       theme_minimal()
     ggplotly(p2)
   })
@@ -72,7 +83,7 @@ server <- function(input, output, session) {
       geom_point(position = position_jitter(width = 0.3, height = 0.3), alpha = 0.7, shape = 21, colour = "blue") +
       scale_size_continuous(range = c(-5, 10)) +
       labs(x = "Product", y = "Saturation", color = "Brand") +
-      ggtitle("House of Tara vs. Hegai and Ester: Saturation Comparison") +
+      ggtitle("Addiction: Saturation Comparison Levels") +
       theme_minimal()
     ggplotly(p2)
   })
@@ -82,7 +93,7 @@ server <- function(input, output, session) {
       geom_point(position = position_jitter(width = 0.3, height = 0.3), alpha = 0.7, shape = 21, colour = "blue") +
       scale_size_continuous(range = c(-5, 10)) +
       labs(x = "Product", y = "Saturation", color = "Brand") +
-      ggtitle("House of Tara vs. Hegai and Ester: Saturation Comparison") +
+      ggtitle("Lakmé: Saturation Comparison Levels") +
       theme_minimal()
     ggplotly(p2)
   })
@@ -93,7 +104,7 @@ server <- function(input, output, session) {
       geom_point(position = position_jitter(width = 0.3, height = 0.3), alpha = 0.7, shape = 21, colour = "blue") +
       scale_size_continuous(range = c(-5, 10)) +
       labs(x = "Product", y = "Saturation", color = "Brand") +
-      ggtitle("House of Tara vs. Hegai and Ester: Saturation Comparison") +
+      ggtitle("Lotus Herbals: Saturation Comparison Levels") +
       theme_minimal()
     ggplotly(p2)
   })
