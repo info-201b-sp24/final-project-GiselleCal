@@ -53,6 +53,7 @@ ui <- navbarPage(
                               choices = c("Fenty" = "Fenty", "Mac" = "Mac"), 
                               selected = "Fenty"),
                  plotlyOutput("chart3plot"),
+                 plotlyOutput("chart3.2Aisha")
                )
              )
            )
@@ -64,14 +65,6 @@ ui <- navbarPage(
            )
   ),
 )
-foundation_dataset <- read.csv("https://raw.githubusercontent.com/info-201b-sp24/exploratory-analysis-Aisha03792/main/shades.csv")
-
-# Filter data for Fenty
-fenty_data <- subset(foundation_dataset, brand == "Fenty")
-
-mac_data <- subset(foundation_dataset, brand == "Mac")
-
-
 server <- function(input, output, session) {
   output$chart3plot <- renderPlotly({
     data <- switch(input$chart_type,
@@ -88,4 +81,5 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui = ui, server = server)
+
 
