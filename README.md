@@ -1,4 +1,4 @@
-# Title of Your Final Project Here 
+# Diversity in the Makeup Industry 
 ## INFO 201 "Foundational Skills for Data Science"
 
 
@@ -8,7 +8,13 @@ Sumaya Mahamed, Aditi Manjunath
 For the Final Project -- Data Wrangling, add the following to this code repository:
 
 * An R script file containing the code you used to create your unified dataset 
+
+Named: Clean_Data_TAble.R
+
 * Your unified and cleaned CSV dataset file
+
+organized_shades.csv
+
 * Data Nutrition Label (pdf) 
 
 
