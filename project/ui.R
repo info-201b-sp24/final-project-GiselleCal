@@ -37,7 +37,7 @@ ui <- navbarPage(
                sidebarPanel(
                  sliderInput("bins", "Number of Bins:", min = 10, max = 50, value = 30),
                  checkboxGroupInput("brands", "Select Brands:",
-                                    choices = unique(Foundation_dataset$brand),
+                                    choices = unique(foundation_dataset$brand),
                                     selected = c("Fenty", "MAC"))
                ),
                
