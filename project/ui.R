@@ -35,7 +35,7 @@ ui <- navbarPage(
              
              sidebarLayout(
                sidebarPanel(
-                 p("You can play with the foundation brands of different companies to see their lightness range of one another. Also, you can try to compare and contrast each brand of foundation to make an observation of what kind of audiences these companies cater to the most? Further, this Dataset includes White owned brands, Black owned brands and International owned brands from India, Japan, and Nigeria")                 sliderInput("bins", "Number of Bins:", min = 10, max = 50, value = 30),
+                 p("You can play with the foundation brands of different companies to see their lightness range of one another. Also, you can try to compare and contrast each brand of foundation to make an observation of what kind of audiences these companies cater to the most? Further, this Dataset includes White owned brands, Black owned brands and International owned brands from India, Japan, and Nigeria"),                sliderInput("bins", "Number of Bins:", min = 10, max = 50, value = 30),
                  checkboxGroupInput("brands", "Select Brands:",
                                     choices = unique(foundation_dataset$brand),
                                     selected = c("Fenty", "MAC"))
