@@ -35,7 +35,7 @@ ui <- navbarPage(
              
              sidebarLayout(
                sidebarPanel(
-                 sliderInput("bins", "Number of Bins:", min = 10, max = 50, value = 30),
+                 p("You can play with the foundation brands of different companies to see their lightness range of one another. Also, you can try to compare and contrast each brand of foundation to make an observation of what kind of audiences these companies cater to the most? Further, this Dataset includes White owned brands, Black owned brands and International owned brands from India, Japan, and Nigeria")                 sliderInput("bins", "Number of Bins:", min = 10, max = 50, value = 30),
                  checkboxGroupInput("brands", "Select Brands:",
                                     choices = unique(foundation_dataset$brand),
                                     selected = c("Fenty", "MAC"))
@@ -43,7 +43,7 @@ ui <- navbarPage(
                
                mainPanel(
                  plotlyOutput("histogramPlot"),
-                 p("The above data set shows the comparison of lightness shades of the two brands Fenty and Mac. Observing the data set you can see how Fenty Foundation has more darker shades than the brand Mac. On the other hand, Mac has more frequency of lightness foundation than Fenty. For example, in the dataset, Mac has more significant brands of foundation that appear to be lighter and one shade that is the darkest. Additionally, in this dataset, the brand Mac appears to cater to more lightness instead of having an equal distribution of shade ranges like Fenty. Moreover, one can make the inference that if you are a person of color then a wiser choice would be to use Fenty Foundation as it appears to be more inclusive than Mac.")
+                 p("The above data set shows the main two brand comparison of lightness shades of the two brands Fenty and Mac. Observing the data set you can see how Fenty Foundation has more darker shades than the brand Mac. On the other hand, Mac has more frequency of lightness foundation than Fenty. For example, in the dataset, Mac has more significant brands of foundation that appear to be lighter and one shade that is the darkest. Additionally, in this dataset, the brand Mac appears to cater to more lighter skin color people instead of having an equal distribution of shades of all people of color like Fenty. If you just select the brand Fenty in the dataset, you can see how diverse Rihanna a black owned celebrity foundation appears to be. Since Rihanna is Black, she understands how important inclusivity is for all people. Unlike Mac a White owned company who invairably profits more from making lighter foundtion and barely even focusing on the struggle of people of color")
                )
              )
            )
